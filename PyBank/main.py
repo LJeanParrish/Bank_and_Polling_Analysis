@@ -6,33 +6,38 @@ import csv
 csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 
 #Define lists to store data
-month = ["Jan-", "Feb-", "Mar-", "Apr-", "May-", "Jun-", "Jul-", "Aug-", "Sep-", "Oct-", "Nov-", "Dec-"]
-total_month = []
+month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+Total_Month = []
 
 print("Financial Analysis")
 print("-------------------------")
 
-#Part II - Identify the total number of months included in the data set
+#Part II - Loop through the data set to print the calculations
 # open csv file path
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
-
+    #print(csvreader)
+   
     csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
-    
+        
     # Read each row of data after the header
     for row in csvreader:
-        print(row)
+        row_count = sum(1 for row in csvreader)
+        #total_months = row[0]
+        #total_months += 1
+        print(f'Total Months: {1 + row_count}')
+        #Total_Month = row[0]
+        #print(f'Total Months  + {range(len(Total_Month))}')
+        #print(row[0])
+        #if row[0] == month
+        #Calculate the total number of months and add to Total_month list
+        #Total_Month.append(Total_Month[int(month)])        
+        #print(row)
         #print(month.index(month))
-
-        # Loop through months and add to total_month list
         #for month in range(len(total_month)):
-            #print(total_month.index(month))
-            
-            
-            #print("[" + str(month) + "] " + total_month[month])
+        #print(total_month.index(month))
+        #print("[" + str(month) + "] " + total_month[month])
     
 #Part III - Total the net amount of profits and losses
 #Part IV - Calculate the changes in "Profit/Losses" over the entire period,
@@ -40,17 +45,10 @@ with open(csvpath) as csvfile:
 #Part V - The greatest increase in profits (date and amount) over the entire period
 #PartVI - The greatest decrease in losses (date and amount) over the entire period
 
-#Part VII - specify the file export the Financial Data to write as txt file
-# output_path = os.path.join("..", "Analysis", "Fin_Analysis.txt")
+#Part VII - specify the file export the Financial Data to write as txt file)
+# Set variable for output file
+# output_file = os.path.join("Financial_Analysis.csv")
 
-# # Open the file using "write" mode. Specify the variable to hold the contents
-# with open(output_path, 'w', newline='') as csvfile:
-
-#     # Initialize csv.writer
-#     csvwriter = csv.writer(csvfile, delimiter=',')
-
-#     # Write the first row (column headers)
-#     csvwriter.writerow(['First Name', 'Last Name', 'SSN'])
-
-#     # Write the second row
-#     csvwriter.writerow(['Caleb', 'Frost', '505-80-2901'])
+# #  Open the output file
+# with open(output_file, "w", newline="") as datafile:
+#     writer = csv.writer(datafile)
