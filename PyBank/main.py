@@ -6,7 +6,7 @@ import csv
 csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 
 #Define lists to store data
-month = 0
+month = ["Jan-", "Feb-", "Mar-", "Apr-", "May-", "Jun-", "Jul-", "Aug-", "Sep-", "Oct-", "Nov-", "Dec-"]
 total_month = []
 
 #open csv file path
@@ -16,11 +16,12 @@ with open(csvpath) as csvfile:
     print(csvreader)
 
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
 
     # Read each row of data after the header
     for row in csvreader:
-        print(row)
+        #print(row)
+        print(month.index(month))
 
 
 #Part II - Identify the total number of months included in the data set
@@ -31,30 +32,13 @@ with open(csvpath) as csvfile:
             
             #print("[" + str(month) + "] " + total_month[month])
     
-        
+#Part III - Total the net amount of profits and losses
+#Part IV - Calculate the changes in "Profit/Losses" over the entire period,
+# Then find the average of those changes
+#Part V - The greatest increase in profits (date and amount) over the entire period
+#PartVI - The greatest decrease in losses (date and amount) over the entire period
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Specify the file export the Financial Data to write as txt file
+#Part VII - specify the file export the Financial Data to write as txt file
 # output_path = os.path.join("..", "Analysis", "Fin_Analysis.txt")
 
 # # Open the file using "write" mode. Specify the variable to hold the contents
