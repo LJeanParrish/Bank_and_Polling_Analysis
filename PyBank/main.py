@@ -9,7 +9,11 @@ csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 month = ["Jan-", "Feb-", "Mar-", "Apr-", "May-", "Jun-", "Jul-", "Aug-", "Sep-", "Oct-", "Nov-", "Dec-"]
 total_month = []
 
-#open csv file path
+print("Financial Analysis")
+print("-------------------------")
+
+#Part II - Identify the total number of months included in the data set
+# open csv file path
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -17,14 +21,12 @@ with open(csvpath) as csvfile:
 
     csv_header = next(csvreader)
     #print(f"CSV Header: {csv_header}")
-
+    
     # Read each row of data after the header
     for row in csvreader:
-        #print(row)
-        print(month.index(month))
+        print(row)
+        #print(month.index(month))
 
-
-#Part II - Identify the total number of months included in the data set
         # Loop through months and add to total_month list
         #for month in range(len(total_month)):
             #print(total_month.index(month))
