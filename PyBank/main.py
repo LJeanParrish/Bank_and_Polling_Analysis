@@ -6,8 +6,11 @@ import csv
 csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 
 #Define lists to store data
-#month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-Total_PNL = [1]
+month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+Total_PNL = 0
+Max_Profit = 0
+Min_Profit = 0
+PNL_Diff = 0
 
 print("Financial Analysis")
 print("-------------------------")
@@ -27,8 +30,10 @@ with open(csvpath) as csvfile:
         print(f'Total Months: {1 + row_count}')
         print(row[1])  #test code
 
+        #Part III - Total the net amount of profits and losses
+        #Loop through row[1] and add all data points and print total
         Total_PNL = sum(range(int(row[1])))
-        print(Total_PNL)
+        print(f'Total: ${Total_PNL}')
         
         #Option1
         #for i in range(len(Total_PNL)):
@@ -48,25 +53,24 @@ with open(csvpath) as csvfile:
         #print(f'Total: {Total_PNL}')
 
 
-        #Part III - Total the net amount of profits and losses
-        #Loop through row[1] and add all data points and print total
+        
         
         #Part IV - Calculate the changes in "Profit/Losses" over the entire period,
+        #Max_Profit = max(row[1])
+        #Min_Profit = min(row[1])
+
+        #PNL_Diff = (Max_Profit - Min_Profit)
+
+        # Then find the average of those changes
+
+        #Avg_Change = (PNL_Diff / (1 + row_count))
+
+        #print(f'Average Change ${Avg_Change}')
 
 
+        
 
 
-
-
-
-
-
-
-
-
-
-
-# Then find the average of those changes
 #Part V - The greatest increase in profits (date and amount) over the entire period
 #PartVI - The greatest decrease in losses (date and amount) over the entire period
 
