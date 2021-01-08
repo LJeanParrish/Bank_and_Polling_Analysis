@@ -7,6 +7,7 @@ csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 
 #Define lists to store data
 month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+pnl = []
 Total_PNL = 0
 Max_Profit = 0
 Min_Profit = 0
@@ -28,12 +29,35 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         row_count = sum(1 for row in csvreader)
         print(f'Total Months: {1 + row_count}')
-        print(row[1])  #test code
+        
+        print(row[1]) #test code  
 
         #Part III - Total the net amount of profits and losses
         #Loop through row[1] and add all data points and print total
-        Total_PNL = sum(range(int(row[1])))
+        #Option 10
+        Total_PNL = sum(pnl for row[1] in csvreader)
         print(f'Total: ${Total_PNL}')
+        
+                
+        #Option 9    
+        #Total_PNL = sum(range(row[1]) for pnl in csvreader)
+        #print(f'Total: ${Total_PNL}')
+
+        
+        #Option 8
+        #csv_header = csv.reader(open(csvpath))
+        #csv_header = next(csvreader) 
+        #print(sum(int(x[1]) for x in csv_header))
+
+        #option 7
+        #reader = csv.DictReader(csvfile)
+        #Total_PNL = sum(float(row[1]) for row in reader)
+        #print(f'Total: ${Total_PNL}')
+
+
+        #Option 6      
+        #Total_PNL = sum(range(int(row[1])))
+        #print(f'Total: ${Total_PNL}')
         
         #Option1
         #for i in range(len(Total_PNL)):
