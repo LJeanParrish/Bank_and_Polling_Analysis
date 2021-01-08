@@ -16,28 +16,16 @@ print("-------------------------")
 # open csv file path
 
 with open(csvpath) as csvfile:
-    csvreader = csv.reader(csvfile, delimiter=',')
-    #print(csvreader)
+    csvreader = csv.reader(csvfile, delimiter=',') 
    
-    csv_header = next(csvreader)
-        
     # Read each row of data after the header
+    csv_header = next(csvreader)        
+    
+    #Calculate the total number of months and add to row_count list
     for row in csvreader:
         row_count = sum(1 for row in csvreader)
-        #total_months = row[0]
-        #total_months += 1
         print(f'Total Months: {1 + row_count}')
-        #Total_Month = row[0]
-        #print(f'Total Months  + {range(len(Total_Month))}')
-        #print(row[0])
-        #if row[0] == month
-        #Calculate the total number of months and add to Total_month list
-        #Total_Month.append(Total_Month[int(month)])        
-        #print(row)
-        #print(month.index(month))
-        #for month in range(len(total_month)):
-        #print(total_month.index(month))
-        #print("[" + str(month) + "] " + total_month[month])
+       
     
 #Part III - Total the net amount of profits and losses
 #Part IV - Calculate the changes in "Profit/Losses" over the entire period,
