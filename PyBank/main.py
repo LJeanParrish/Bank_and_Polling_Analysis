@@ -89,14 +89,20 @@ with open(csvpath) as csvfile:
 
         #Avg_Change = (PNL_Diff / (1 + row_count))
 
-        #print(f'Average Change ${Avg_Change}')
-
-
+        print(f'Average Change ${Avg_Change}')
         
 
 
-#Part V - The greatest increase in profits (date and amount) over the entire period
-#PartVI - The greatest decrease in losses (date and amount) over the entire period
+        #Part V - The greatest increase in profits (date and amount) over the entire period
+        #Use Max_Profit calculated in part III to bring back corresponding date
+
+        print(f'Greatest Increase in Profits: Date ${(Max_Profit)}')
+        
+        #PartVI - The greatest decrease in losses (date and amount) over the entire period
+        #Use Min_Profit calculated in part III to bring back corresponding date
+
+        print(f'Greatest Increase in Profits: Date ${(Min_Profit)}')
+
 
 #Part VII - specify the file export the Financial Data to write as txt file)
 # Set variable for output file
