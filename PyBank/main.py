@@ -7,7 +7,7 @@ csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 
 #Define lists to store data
 #month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-Total_PNL = []
+Total_PNL = [1]
 
 print("Financial Analysis")
 print("-------------------------")
@@ -25,17 +25,31 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         row_count = sum(1 for row in csvreader)
         print(f'Total Months: {1 + row_count}')
-        print(row[1:])  #test code
+        print(row[1])  #test code
+
+        Total_PNL = sum(range(int(row[1])))
+        print(Total_PNL)
+        
+        #Option1
+        #for i in range(len(Total_PNL)):
+            #print(f'(Total: {sum([float(i) for i in csvreader])})')        
+
+        #Option2
+        #Total_PNL = [row[-1] for row in csvreader]
+        #sum([float(i) for i in range(len(Total_PNL))])
+        #print(Total_PNL)
+
+        #Option3
+        #Total_PNL = [row[-1] for row in csvreader]
+        #print(f'Total: {sum([float(i) for i in range(len(Total_PNL))])}')        
+        
+        #Option4      
+        #Total_PNL = sum(float(row[1]) for row in csvreader)
+        #print(f'Total: {Total_PNL}')
+
 
         #Part III - Total the net amount of profits and losses
         #Loop through row[1] and add all data points and print total
-        
-        
-        
-        
-        Total_PNL = sum(float(row[1]) for row in csvreader)
-        print(f'Total: {Total_PNL}')        
-        
         
         #Part IV - Calculate the changes in "Profit/Losses" over the entire period,
 
