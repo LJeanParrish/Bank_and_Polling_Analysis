@@ -3,7 +3,7 @@
 import os
 import csv
 
-csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
+csvpath = os.path.join('..', 'Pybank', 'Resources', 'budget_data.csv')
 
 #Define lists and variables to store data
 row_count = 0
@@ -34,7 +34,7 @@ with open(csvpath) as csvfile:
         Total_PNL = Total_PNL + int(row[1])
         PNL_Diff = int(row[1]) - previous
 
-        #Find the average of the PNL differences
+        #Add the differences to a list
         Avg_Change.append(PNL_Diff)
         previous = int(row[1])
 
@@ -49,14 +49,17 @@ with open(csvpath) as csvfile:
         if PNL_Diff < Min_Profit[1]:
             Min_Profit[1] = PNL_Diff 
             Min_Profit[0] = row[0]
-
+    
+    #Find the total average of PNL differences for the completed list
     Total_Avg = sum(Avg_Change[1:])/(len(Avg_Change)-1)
+    Total_Avg =str(round(Total_Avg,2))
 
+    #Print all findings of Financial Analysis
     print(f'Total Months: {row_count}')        
     print(f'Total: ${Total_PNL}')
-    print(f'Average {Total_Avg}')
-    print(Max_Profit[0], Max_Profit[1])
-    print(Min_Profit[0], Min_Profit[1])
+    print(f'Average Change: ${Total_Avg}')
+    print(f'Greatest Increase in Profits: {Max_Profit[0]}, (${Max_Profit[1]})')
+    print(f'Greatest Decrease in Profits: {Min_Profit[0]}, (${Min_Profit[1]})')
 
 
 
@@ -85,8 +88,9 @@ with open(csvpath) as csvfile:
 
 #Part VII - specify the file export the Financial Data to write as txt file)
 # Set variable for output file
-# output_file = os.path.join("Financial_Analysis.csv")
+output_file = os.path.join('..', 'Pybank', 'Analysis',"Financial_Analysis.csv")
 
 # Open the output file
-# with open(output_file, "w", newline="") as datafile:
-# #     writer = csv.writer(datafile)
+with open(output_file, "w", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+   
