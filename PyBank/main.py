@@ -62,30 +62,6 @@ with open(csvpath) as csvfile:
     print(f'Greatest Decrease in Profits: {Min_Profit[0]}, (${Min_Profit[1]})')
 
 
-
-    # row=2
-    # row_count = 0+1 =1
-    # total_pnl = 0 + 867884
-    # PNL_Diff = 867884- 0 = 867884
-    # Avg_Change = [867884]
-    # previous = 867884
-
-
-    # row = 3
-    # row_count = 1+1 =2
-    # total_pnl =867884 + 967880 = 15000000
-    # PNL_Diff = 967880 - 867884 =xyz
-    # Avg_Change = [867884, xyz]
-    # previous = 967880
-
-    #   row = 4
-    # row_count =2+1 +3
-    # total_pnl =15000000 + int(row[1])
-    # PNL_Diff = 322013-967880 = -abc
-    # Avg_Change = [867884,xyz,-abc]
-    # previous = 322013
-
-
 #Part VII - specify the file export the Financial Data to write as txt file)
 # Set variable for output file
 output_file = os.path.join('..', 'Pybank', 'Analysis',"Financial_Analysis.csv")
