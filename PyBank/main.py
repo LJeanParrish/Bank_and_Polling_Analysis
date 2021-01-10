@@ -5,10 +5,8 @@ import csv
 
 csvpath = os.path.join('..', 'PyBank', 'Resources', 'budget_data.csv')
 
-#Define lists to store data
-#month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+#Define lists and variables to store data
 row_count = 0
-pnl = []
 Total_PNL = 0
 Avg_Change = []
 previous = 0
@@ -19,7 +17,7 @@ PNL_Diff = 0
 print("Financial Analysis")
 print("-------------------------")
 
-#Part II - Loop through the data set to print the calculations
+#Part II - Loop through data set to print the calculations
 # open csv file path
 
 with open(csvpath) as csvfile:
@@ -28,21 +26,25 @@ with open(csvpath) as csvfile:
     # Read each row of data after the header
     csv_header = next(csvreader)        
     
-    #Calculate the total number of months and add to row_count list
-    for row in csvreader:
-        print(row)
+    #Part III - Calculate the total number of months and add to row_count list
+    for row in csvreader:    
         row_count = row_count + 1
-        #row_count = sum(1 for row in csvreader)
-
-
+        
+        #Part IV - Calculate the changes in "Profit/Losses" over the entire period,
         Total_PNL = Total_PNL + int(row[1])
         PNL_Diff = int(row[1]) - previous
+
+        #Find the average of the PNL differences
         Avg_Change.append(PNL_Diff)
         previous = int(row[1])
+
+        #Part V - The greatest increase in profits (date and amount) over the entire period
 
         if PNL_Diff > Max_Profit[1]:
             Max_Profit[1] = PNL_Diff 
             Max_Profit[0] = row[0]
+
+         #PartVI - The greatest decrease in losses (date and amount) over the entire period
 
         if PNL_Diff < Min_Profit[1]:
             Min_Profit[1] = PNL_Diff 
@@ -81,89 +83,10 @@ with open(csvpath) as csvfile:
     # previous = 322013
 
 
+#Part VII - specify the file export the Financial Data to write as txt file)
+# Set variable for output file
+# output_file = os.path.join("Financial_Analysis.csv")
 
-
-
-        
-#         print(row[1]) #test code  
-
-#         #Part III - Total the net amount of profits and losses
-#         #Loop through row[1] and add all data points and print total
-#         #Option 10
-#         Total_PNL = sum(pnl for row[1] in csvreader)
-#         print(f'Total: ${Total_PNL}')
-
-#         #Option 6      
-#         #Total_PNL = sum(range(int(row[1])))
-#         #print(f'Total: ${Total_PNL}')
-        
-                
-#         #Option 9    
-#         #Total_PNL = sum(range(row[1]) for pnl in csvreader)
-#         #print(f'Total: ${Total_PNL}')
-
-        
-#         #Option 8
-#         #csv_header = csv.reader(open(csvpath))
-#         #csv_header = next(csvreader) 
-#         #print(sum(int(x[1]) for x in csv_header))
-
-#         #option 7
-#         #reader = csv.DictReader(csvfile)
-#         #Total_PNL = sum(float(row[1]) for row in reader)
-#         #print(f'Total: ${Total_PNL}')
-
-#         #Option 6      
-#         #Total_PNL = sum(range(int(row[1])))
-#         #print(f'Total: ${Total_PNL}')
-        
-#         #Option1
-#         #for i in range(len(Total_PNL)):
-#             #print(f'(Total: {sum([float(i) for i in csvreader])})')        
-
-#         #Option2
-#         #Total_PNL = [row[-1] for row in csvreader]
-#         #sum([float(i) for i in range(len(Total_PNL))])
-#         #print(Total_PNL)
-
-#         #Option3
-#         #Total_PNL = [row[-1] for row in csvreader]
-#         #print(f'Total: {sum([float(i) for i in range(len(Total_PNL))])}')        
-        
-#         #Option4      
-#         #Total_PNL = sum(float(row[1]) for row in csvreader)
-#         #print(f'Total: {Total_PNL}')
-        
-        
-#         #Part IV - Calculate the changes in "Profit/Losses" over the entire period,
-#         #Max_Profit = max(row[1])
-#         #Min_Profit = min(row[1])
-
-#         #PNL_Diff = (Max_Profit - Min_Profit)
-
-#         # Then find the average of those changes
-
-#         #Avg_Change = (PNL_Diff / (1 + row_count))
-
-#         #print(f'Average Change ${Avg_Change}')
-        
-
-
-#         #Part V - The greatest increase in profits (date and amount) over the entire period
-#         #Use Max_Profit calculated in part III to bring back corresponding date
-
-#         #print(f'Greatest Increase in Profits: Date ${(Max_Profit)}')
-        
-#         #PartVI - The greatest decrease in losses (date and amount) over the entire period
-#         #Use Min_Profit calculated in part III to bring back corresponding date
-
-#         #print(f'Greatest Increase in Profits: Date ${(Min_Profit)}')
-
-
-# #Part VII - specify the file export the Financial Data to write as txt file)
-# # Set variable for output file
-# # output_file = os.path.join("Financial_Analysis.csv")
-
-# # #  Open the output file
-# # with open(output_file, "w", newline="") as datafile:
+# Open the output file
+# with open(output_file, "w", newline="") as datafile:
 # #     writer = csv.writer(datafile)
