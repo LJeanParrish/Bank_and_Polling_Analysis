@@ -9,41 +9,35 @@ csvpath = os.path.join('..', 'PyPoll', 'Resources', 'election_data.csv')
 row_count = 0
 canidate_list = []
 
-khan_count = 0
-correy_count = 0
-li_count = 0
-otooley_count = 0
-
-kpercent = 0
-cpercent = 0
-lpercent = 0
-opercent = 0
-
-
 print("Election Results")
 print("-------------------------")
 
-#Part II - Loop through the data set to print the calculations
-# open csv file path
+#Part II - Retrieve data from CSV file path
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',') 
       
     # Read each row of data after the header
     csv_header = next(csvreader)  
 
+    #create canidate dictionary to store election results
     canidatedict = {}    
 
     for row in csvreader:
 
-        #Calculate the total number of individual votes and add to row_count list
+        #Calculate the total number of individual votes in the election
         row_count = row_count + 1 
+
+        #Loop through data set and add canidates to canidate list
+        #Add the number of votes each canidate received
         
         if row[2] not in canidate_list:
             canidate_list.append(row[2])
             canidatedict[row[2]] = 0
+
         canidatedict[row[2]] = canidatedict[row[2]] + 1
     
-    print(row_count)    
+    print(f'Total Votes: {row_count}')    
+    print("-------------------------")
     print(canidate_list)    
     print(canidatedict)
 #         #Capture the canidate list
