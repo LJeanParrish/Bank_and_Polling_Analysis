@@ -9,10 +9,17 @@ csvpath = os.path.join('..', 'PyPoll', 'Resources', 'election_data.csv')
 row_count = 0
 total_canidate = ""
 canidate_list = []
-previous = ""
-#canidate_count = ""
-Khan_Vote = 0
-Khan = ""
+previous = 0
+canidate_count = ""
+
+khan_vote = 0
+khan_count = 0
+khan_total = []
+correy_vote = 0
+li_vote = 0
+otooley_vote = 0
+
+
 
 print("Election Results")
 print("-------------------------")
@@ -23,23 +30,35 @@ with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',') 
    
     # Read each row of data after the header
-    csv_header = next(csvreader)        
-    
-    #Calculate the total number of individual votes and add to row_count list
-    total_canidate = total_canidate + str(row[2])
-    canidate_count = str(row[2]) - previous
+    csv_header = next(csvreader)       
 
-    #Add canidates to a list
-    canidate_list.append(canidate_count)
-    previous = str(row[2])
-    
-    
-    
-    
-    
-    # for row in csvreader:
-    #     row_count = sum(1 for row in csvreader)
+    for row in csvreader:
 
+        #Calculate the total number of individual votes and add to row_count list
+        row_count = sum(1 for row in csvreader) 
+        
+        #Capture the canidate list
+        for canidate in csvreader:
+            canidate = canidate + str(row[2])
+            canidate_list.append(canidate)
+            previous = int(row[2])
+
+        #The percentage of votes each candidate won
+
+
+        #The total number of votes each candidate won
+        # khan_vote = khan_vote + int(row[2])
+        # khan_count = int(row[2]) - previous
+        # khan_total.append(khan_count)
+        # previous = int(row[2])
+
+
+        #The winner of the election based on popular vote
+        #if then statement
+
+
+    
+    ###Other Attempts for part 2--------------------------------------------------
     #     if str(row[2]) == Khan:
     #         Khan_Vote.append(khan)
     # print(Khan_Vote)
