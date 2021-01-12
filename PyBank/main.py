@@ -54,25 +54,30 @@ with open(csvpath) as csvfile:
     Total_Avg = sum(Avg_Change[1:])/(len(Avg_Change)-1)
     Total_Avg =str(round(Total_Avg,2))
 
-    #Print all findings of Financial Analysis
-    print(f'Total Months: {row_count}')        
-    print(f'Total: ${Total_PNL}')
-    print(f'Average Change: ${Total_Avg}')
-    print(f'Greatest Increase in Profits: {Max_Profit[0]}, (${Max_Profit[1]})')
-    print(f'Greatest Decrease in Profits: {Min_Profit[0]}, (${Min_Profit[1]})')
-
-
+    # #Print all findings of Financial Analysis
+    # print(f'Total Months: {row_count}')        
+    # print(f'Total: ${Total_PNL}')
+    # print(f'Average Change: ${Total_Avg}')
+    # print(f'Greatest Increase in Profits: {Max_Profit[0]}, (${Max_Profit[1]})')
+    # print(f'Greatest Decrease in Profits: {Min_Profit[0]}, (${Min_Profit[1]})')
+    results = (f'Total Months: {row_count}\n'
+    f'Total: ${Total_PNL}\n'
+    f'Average Change: ${Total_Avg}\n'
+    f'Greatest Increase in Profits: {Max_Profit[0]}, (${Max_Profit[1]})\n'
+    f'Greatest Decrease in Profits: {Min_Profit[0]}, (${Min_Profit[1]})')
+    print(results)
 #Part VII - specify the file export the Financial Data to write as txt file)
 # Set variable for output file
-output_file = os.path.join('..', 'Pybank', 'Analysis',"Financial_Analysis.csv")
+output_file = os.path.join('..', 'Pybank', 'Analysis',"Financial_Analysis.txt")
 
 # Open the output file
-with open(output_file, "w", newline="") as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(["Financial Analysis"])
-    writer.writerow(["Total Months: 86"])
-    writer.writerow(["Total: $38382578"])
-    writer.writerow(["Average Change: $-2315.12"])
-    writer.writerow(["Greatest Increase in Profits: Feb-2012, ($1926159)"])
-    writer.writerow(["Greatest Decrease in Profits: Sep-2013, ($-2196167)"])
+with open(output_file, "w", newline="") as txtfile:
+    # writer.writerow(["Financial Analysis"])
+    # writer.write([f'Total Months: {row_count}\n'])
+    # writer.writerow(["Total: $38382578"])
+    # writer.writerow(["Average Change: $-2315.12"])
+    # writer.writerow(["Greatest Increase in Profits: Feb-2012, ($1926159)"])
+    # writer.writerow(["Greatest Decrease in Profits: Sep-2013, ($-2196167)"])
+
+    txtfile.write(results)
    
