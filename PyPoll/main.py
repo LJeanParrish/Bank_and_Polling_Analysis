@@ -61,19 +61,31 @@ with open(csvpath) as csvfile:
         opercent =str(round(cpercent,2))
 
 
-        #Create a dictionary which holds all election results
-       
-       election_results = {[canidate:"Khan", percent:"kperent", vote: "khan_count"],
-                            [canidate:"Correy", percent:"cperent", vote: "correy_count"],
-                            [canidate:"Li", percent:"lperent", vote: "li_count"],
-                            [canidate:"O'Tooley", percent:"operent", vote: "otooley_count"]}
+#Create a dictionary which holds all election results
+election_results = {[canidate:"Khan", percent:"kperent", vote: "khan_count"],
+[canidate:"Correy", percent:"cperent", vote: "correy_count"],
+[canidate:"Li", percent:"lperent", vote: "li_count"],
+[canidate:"O'Tooley", percent:"operent", vote: "otooley_count"]}
 
-        print(election_results)
+#Print all analysis on Election Results
+print(f'Total Votes: {1 + row_count}')
+print("-------------------------")
+print(election_results)      
 
 
-        #The winner of the election based on popular vote
-        #Create conditional to determine election results
+#The winner of the election based on popular vote
+#Create conditional to determine election results
+If khan_count > correy_count and li_count and otooley_count:
+print("Winner: Khan")
 
+If correy_count > khan_count and li_count and otooley_count:
+print("Winner: Correy")
+
+If li_count > khan_count and correy_count and otooley_count:
+print("Winner: Li")
+
+If otooley_count  > khan_count and correy_count and li_count:
+print("Winner: O'Tooley")
 
     
     ###Other Attempts for part 2--------------------------------------------------
@@ -99,7 +111,7 @@ with open(csvpath) as csvfile:
         #     li_count = Li + 1
 
         # if canidate == OTooley[2]:
-        #     otooley_count = "O'Tooley" + 1             
+        #     otooley_count = "O'Tooley" + 1          
             
 
             # canidate_list.append(canidate)
@@ -122,10 +134,7 @@ with open(csvpath) as csvfile:
         #     #canidate_list.append(row[2])
         #     # #previous = row[2]
         
-#Print all analysis on Election Results
-print(f'Total Votes: {1 + row_count}')
-print("-------------------------")
-print(election_results)
+
 
 
 #Specify the file export the Financial Data to write as txt file)
