@@ -7,13 +7,12 @@ csvpath = os.path.join('..', 'PyPoll', 'Resources', 'election_data.csv')
 
 #Define lists and variables to store data
 row_count = 0
-#canidate = ""
-canidate_list = ["Khan", "Correy", "Li", "O'Tooley"]
-#previous = ""
+total_canidate = ""
+canidate_list = []
+previous = ""
 #canidate_count = ""
 Khan_Vote = 0
 Khan = ""
-
 
 print("Election Results")
 print("-------------------------")
@@ -27,12 +26,23 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)        
     
     #Calculate the total number of individual votes and add to row_count list
-    for row in csvreader:
-        row_count = sum(1 for row in csvreader)
+    total_canidate = total_canidate + str(row[2])
+    canidate_count = str(row[2]) - previous
 
-        if str(row[2]) == Khan:
-            Khan_Vote.append(khan)
-    print(Khan_Vote)
+    #Add canidates to a list
+    canidate_list.append(canidate_count)
+    previous = str(row[2])
+    
+    
+    
+    
+    
+    # for row in csvreader:
+    #     row_count = sum(1 for row in csvreader)
+
+    #     if str(row[2]) == Khan:
+    #         Khan_Vote.append(khan)
+    # print(Khan_Vote)
 
 
 
@@ -56,6 +66,22 @@ with open(csvpath) as csvfile:
         #     #canidate_list.append(row[2])
         #     # #previous = row[2]
         
-
+#Print all analysis on Election Results
 print(f'Total Votes: {1 + row_count}')
 print("-------------------------")
+print(canidate_list)
+
+#Specify the file export the Financial Data to write as txt file)
+# Set variable for output file
+output_file = os.path.join('..', 'Pypoll', 'Analysis',"Election_Results.csv")
+
+# Open the output file
+with open(output_file, "w", newline="") as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["Election Results"])
+    writer.writerow([""])
+    writer.writerow([""])
+    writer.writerow([""])
+    writer.writerow([""])
+    writer.writerow([""])
+   
