@@ -41,10 +41,21 @@ with open(csvpath) as csvfile:
       
     canidateperdict = {} 
     maxcount = 0
+    total_votes = (f'Total Votes: {row_count}\n')
+
+#Specify the file export for the election results to write as txt file)
+#Set variable for output file
+output_file = os.path.join('..', 'Pypoll', 'Analysis',"Election_Results.txt")
+
+with open(output_file, "w", newline="") as txtfile:
+    txtfile.write(total_votes)
 
     for canidate in canidatedict:
         canidateperdict[canidate] = round((canidatedict[canidate]/row_count * 100), 3)         
         print(f'{canidate}: {canidateperdict[canidate]}% ({canidatedict[canidate]})')
+
+        election_results = (f'{canidate}: {canidateperdict[canidate]}% ({canidatedict[canidate]})\n')
+        txtfile.write(election_results)
 
         #Determine which canidate is the winner
         if canidatedict[canidate] > maxcount:
@@ -55,16 +66,5 @@ with open(csvpath) as csvfile:
     print(f'Winner: {winner}')
     print("-------------------------")   
 
-    Election_Final = (f'Total Votes: {row_count}\n'
-    f'{canidate}: {canidateperdict[canidate]}% ({canidatedict[canidate]})\n'
-    f'Winner: {winner}')
-   
-#Specify the file export for the election results to write as txt file)
-#Set variable for output file
-output_file = os.path.join('..', 'Pypoll', 'Analysis',"Election_Results.txt")
-
-# Open the output file
-with open(output_file, "w", newline="") as txtfile:
-    txtfile.write(Election_Final)
-    
-   
+    election_winner = (f'Winner: {winner}')
+    txtfile.write(election_winner)
