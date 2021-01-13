@@ -38,7 +38,6 @@ with open(csvpath) as csvfile:
     #print election results
     print(f'Total Votes: {row_count}')    
     print("-------------------------")
-    Total_Vote = (f'Total Votes: {row_count}')   
       
     canidateperdict = {} 
     maxcount = 0
@@ -47,7 +46,7 @@ with open(csvpath) as csvfile:
         canidateperdict[canidate] = round((canidatedict[canidate]/row_count * 100), 3)         
         print(f'{canidate}: {canidateperdict[canidate]}% ({canidatedict[canidate]})')
 
-         #Determine which canidate is the winner
+        #Determine which canidate is the winner
         if canidatedict[canidate] > maxcount:
             maxcount = canidatedict[canidate]
             winner = canidate 
