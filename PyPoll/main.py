@@ -38,43 +38,34 @@ with open(csvpath) as csvfile:
     #print election results
     print(f'Total Votes: {row_count}')    
     print("-------------------------")
-    #print(f'{canidate_list}: {canidatedict}')
-    #print("-------------------------")
-    
-    #print(canidate_list)    
-    #print(canidatedict)
-
-   
+    Total_Vote = (f'Total Votes: {row_count}')   
+      
     canidateperdict = {} 
     maxcount = 0
 
     for canidate in canidatedict:
-        #canidateperdict[canidate] = round((canidatedict[canidate]/row_count * 100), 3) 
-        canidateperdict[canidate] = str(round((canidatedict[canidate]/row_count * 100), 3))         
+        canidateperdict[canidate] = round((canidatedict[canidate]/row_count * 100), 3)         
         print(f'{canidate}: {canidateperdict[canidate]}% ({canidatedict[canidate]})')
 
          #Determine which canidate is the winner
         if canidatedict[canidate] > maxcount:
             maxcount = canidatedict[canidate]
-            winner = canidate
-
+            winner = canidate 
+    
     print("-------------------------")
     print(f'Winner: {winner}')
-    print("-------------------------")
+    print("-------------------------")   
 
-    results = (f'Total Votes: {row_count}\n'
-    f'{"-------------------------"}\n'
+    Election_Final = (f'Total Votes: {row_count}\n'
     f'{canidate}: {canidateperdict[canidate]}% ({canidatedict[canidate]})\n'
-    f'{"-------------------------"}\n'
-    f'Winner: {winner}\n'
-    f'{"-------------------------"}')
-
+    f'Winner: {winner}')
+   
 #Specify the file export for the election results to write as txt file)
 #Set variable for output file
 output_file = os.path.join('..', 'Pypoll', 'Analysis',"Election_Results.txt")
 
 # Open the output file
 with open(output_file, "w", newline="") as txtfile:
-    txtfile.write("Election Results")
-    txtfile.write(results)
+    txtfile.write(Election_Final)
+    
    
